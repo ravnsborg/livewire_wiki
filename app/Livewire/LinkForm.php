@@ -27,8 +27,9 @@ class LinkForm extends Component
     public function render()
     {
         return view('livewire.link-form', [
-            //            'urls' => Link::latest()->paginate(10)
-            'urls' => Link::paginate(10),
+            'urls' => Link::where('entity_id', Auth::user()->preferred_entity_id)
+                ->latest()
+                ->paginate(10),
         ]);
     }
 
@@ -64,7 +65,7 @@ class LinkForm extends Component
 
     public function edit($id)
     {
-        $url = Link::findOrFail($id);
+        $url = Link::where('entity_id', Auth::user()->preferred_entity_id)->findOrFail($id);
         $this->editingId = $url->id;
         $this->url = $url->url;
         $this->title = $url->title;
@@ -73,7 +74,9 @@ class LinkForm extends Component
 
     public function delete($id)
     {
-        Link::findOrFail($id)->delete();
+        Link::where('entity_id', Auth::user()->preferred_entity_id)
+            ->findOrFail($id)
+            ->delete();
         session()->flash('message', 'URL deleted successfully.');
     }
 
