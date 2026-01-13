@@ -37,6 +37,7 @@ class ArticleForm extends Component
         } else {
             $this->article = new Article;
         }
+        $this->category_id = $this->article->category_id;
     }
 
     public function save()

@@ -1,16 +1,17 @@
 <!-- Header - Full Width -->
-<header class="w-full bg-blue-600 text-white p-4 shadow-lg dark:bg-gray-900 dark:text-gray-100">
+<header class="dark-primary w-full light-primary p-4 shadow-lg ">
+{{--<header class="w-full bg-teal-600 text-white p-4 shadow-lg dark:bg-gray-900 dark:text-gray-100">--}}
     <div class="flex items-center justify-between px-5 ">
         <!-- Logo/Title -->
         <h1 class="text-2xl font-bold">{{$this->selectedEntity->title}} Wiki</h1>
-        
+
         <!-- Center: Search -->
         <livewire:search />
 
         <!-- Add new category -->
-        <div class="flex-1 max-w-2xl mx-8 flex items-center gap-3">            
-            <button 
-                class="px-4 py-2 bg-blue-500 hover:bg-blue-400 rounded-lg transition whitespace-nowrap dark:bg-blue-700 dark:hover:bg-blue-600"
+        <div class="flex-1 max-w-2xl mx-8 flex items-center gap-3">
+            <button
+                class="px-4 py-2 bg-blue-500 hover:bg-blue-400 rounded-lg transition whitespace-nowrap dark-btn"
                 href="{{ route("article-show-create-form") }}"
                 wire:navigate
             >
@@ -20,16 +21,16 @@
 
         <!-- Right Side - Dropdowns -->
         <div class="flex items-center gap-4">
-            
+
             <!-- Links Dropdown -->
             <div class="relative">
-                <button id="dropdown1Btn" class="px-4 py-2 bg-blue-500 hover:bg-blue-400 rounded-lg transition flex items-center gap-2 dark:bg-blue-700 dark:hover:bg-blue-600">
+                <button id="dropdown1Btn" class="px-4 py-2 bg-blue-500 hover:bg-blue-400 rounded-lg transition flex items-center gap-2 dark-btn">
                     Links
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
-                <div id="dropdown1" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10 dark:bg-gray-800 dark:text-gray-200">
+                <div id="dropdown1" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10 dark:bg-gray-700 dark:text-gray-200">
                     @foreach($links as $link)
                         <a
                             href="{{ $link->url }}"
@@ -52,13 +53,13 @@
 
             <!-- Entities Dropdown -->
             <div class="relative">
-                <button id="dropdown2Btn" class="px-4 py-2 bg-blue-500 hover:bg-blue-400 rounded-lg transition flex items-center gap-2 dark:bg-blue-700 dark:hover:bg-blue-600">
+                <button id="dropdown2Btn" class="px-4 py-2 bg-blue-500 hover:bg-blue-400 rounded-lg transition flex items-center gap-2 dark-btn">
                     Entities
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
-                <div id="dropdown2" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10 dark:bg-gray-800 dark:text-gray-200">
+                <div id="dropdown2" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10 dark:bg-gray-700 dark:text-gray-200">
                     @foreach($entities as $entity)
                     <span
                         type="button"
@@ -72,7 +73,7 @@
                             <i class="fa-solid fa-check ml-2 text-xs"></i>
                         @endif
                     </span>
-                    @endforeach                    
+                    @endforeach
                 </div>
             </div>
 
@@ -82,7 +83,7 @@
                     {{ Auth::user()->name[0] }}
                 </button>
 
-                <div id="accountDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10 dark:bg-gray-800 dark:text-gray-200">
+                <div id="accountDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10 dark:bg-gray-700 dark:text-gray-200">
                     <!-- New Entity  -->
                     <button class="block px-4 py-2 text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                             href="{{ route("entity-show-create-form") }}"
@@ -107,7 +108,7 @@
                         >
                             Logout
                         </button>
-                    </form>                
+                    </form>
                 </div>
             </div>
         </div>

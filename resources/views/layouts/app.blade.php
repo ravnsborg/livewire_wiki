@@ -13,12 +13,13 @@
 
     <!-- Styles -->
     <livewire:styles />
- 
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
- 
+
 </head>
 
-<body class="h-screen flex flex-col bg-gray-100 dark:bg-gray-600 dark:text-gray-200">
+<body class="dark-primary h-screen flex flex-col ">
+{{--<body class="h-screen flex flex-col bg-teal-100 dark:bg-cyan-900 dark:text-white-200">--}}
 
     <livewire:header />
 
@@ -26,13 +27,13 @@
     <div class="flex flex-1 overflow-hidden">
 
         <!-- Left Sidebar -->
-        <aside class="w-64 bg-gray-100 p-4 pt-6 flex flex-col gap-4 dark:bg-gray-600">
+        <aside class="w-64 bg-gray-100 p-4 pt-6 flex flex-col gap-4 dark-secondary">
             <livewire:category-list />
             <livewire:favorite-list />
         </aside>
 
         <!-- Main Content Area -->
-        <main class="flex-1 overflow-y-auto p-6">
+        <main class="flex-1 overflow-y-auto p-6 dark-secondary">
             <livewire:article-list />
         </main>
 
