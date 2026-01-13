@@ -1,11 +1,11 @@
 <div class="max-w-7xl mx-auto space-y-4">
     <!-- Cards -->
     @foreach($articles as $article)
-        <div class="bg-white rounded-lg shadow-md p-4 border border-gray-200 
-                    dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200">
+        <div class="bg-white rounded-lg shadow-md p-4 border border-gray-200
+                    dark:bg-gray-700 dark:border-gray-700 dark:text-gray-200">
             <div class="relative mb-4">
                 <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100">
-                    kevin{!! $article->title !!}
+                    {!! $article->title !!}
                 </h3>
 
                 <div class="absolute right-0 top-0 text-sm">
@@ -30,9 +30,10 @@
                 </div>
             </div>
             <div class="mt-7 p-3 bg-blue-200 rounded text-gray-900 whitespace-pre-line
-                        dark:bg-blue-600 dark:text-gray-100">
+                        dark:bg-gray-600 dark:text-gray-100">
                 {!! $this->highlightMatch($article->body) !!}
             </div>
         </div>
+        <div class="h-1"></div>
     @endforeach
 </div>
