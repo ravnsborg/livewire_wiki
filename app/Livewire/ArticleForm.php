@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Article;
 use App\Models\Category;
 use App\Services\PatternFormatter;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -26,7 +27,7 @@ class ArticleForm extends Component
 
     public $categoryList = [];
 
-    public function mount($article = null)
+    public function mount($article = null): void
     {
         $this->categoryList = Category::where('entity_id', Auth::user()->preferred_entity_id)->orderBy('title')->get();
 
@@ -40,7 +41,7 @@ class ArticleForm extends Component
         $this->category_id = $this->article->category_id;
     }
 
-    public function save()
+    public function save(): void
     {
         $this->validate();
 
@@ -59,7 +60,7 @@ class ArticleForm extends Component
         $this->redirect('/');
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.article-form');
     }

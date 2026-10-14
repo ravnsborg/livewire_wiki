@@ -2,13 +2,14 @@
 
 namespace App\Livewire;
 
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class Search extends Component
 {
     public $searchText = '';
 
-    public function render()
+    public function render(): View
     {
         $this->reset('searchText');
 

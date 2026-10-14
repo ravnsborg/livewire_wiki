@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Category;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -20,7 +21,7 @@ class CategoryForm extends Component
 
     public ?int $entityId = null;
 
-    public function mount()
+    public function mount(): void
     {
         $this->entityId = Auth::user()->preferred_entity_id;
     }
@@ -28,7 +29,7 @@ class CategoryForm extends Component
     /*
      * Create new category and its child article
      */
-    public function save()
+    public function save(): void
     {
         $this->validate();
 
@@ -43,7 +44,7 @@ class CategoryForm extends Component
         $this->redirect('/');
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.category-form');
     }

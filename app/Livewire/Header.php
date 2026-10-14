@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Entity;
 use App\Models\Link;
 use App\Models\User;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -21,7 +22,7 @@ class Header extends Component
     /*
      * Refresh entity and reload page to that entity's content
      */
-    public function refreshEntity($entityId)
+    public function refreshEntity(int $entityId): void
     {
         // Only update if entity id exists
         $entity = Entity::find($entityId);
@@ -34,7 +35,7 @@ class Header extends Component
         $this->redirect('/');
     }
 
-    public function mount()
+    public function mount(): void
     {
         $this->entities = Entity::select('title', 'id')->where('user_id', Auth::user()->id)->orderBy('title')->get();
         $this->selectedEntity = $this->entities->find(Auth::user()->preferred_entity_id);
@@ -42,7 +43,7 @@ class Header extends Component
         $this->links = Link::orderBy('title')->get();
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.header');
     }
