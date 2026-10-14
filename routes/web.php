@@ -1,20 +1,24 @@
 <?php
 
+use App\Livewire\ArticleForm;
+use App\Livewire\CategoryForm;
+use App\Livewire\EntityForm;
+use App\Livewire\LinkForm;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/category/create', \App\Livewire\CategoryForm::class)
+Route::get('/category/create', CategoryForm::class)
     ->middleware(['auth', 'verified'])
     ->name('category-show-create-form');
 
-Route::get('/article/create', \App\Livewire\ArticleForm::class)
+Route::get('/article/create', ArticleForm::class)
     ->middleware(['auth', 'verified'])
     ->name('article-show-create-form');
 
-Route::get('/article/{article}', \App\Livewire\ArticleForm::class)
+Route::get('/article/{article}', ArticleForm::class)
     ->middleware(['auth', 'verified'])
     ->name('article-show-update-form');
 
-Route::get('/entity/create', \App\Livewire\EntityForm::class)
+Route::get('/entity/create', EntityForm::class)
     ->middleware(['auth', 'verified'])
     ->name('entity-show-create-form');
 
@@ -31,7 +35,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->middleware(['auth'])
         ->name('profile');
 
-    Route::get('/link', \App\Livewire\LinkForm::class)
+    Route::get('/link', LinkForm::class)
         ->middleware(['auth', 'verified'])
         ->name('link-show-form');
 
