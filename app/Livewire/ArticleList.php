@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Article;
+use Illuminate\Contracts\View\View;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -14,18 +15,18 @@ class ArticleList extends Component
 
     public $favorites = [];
 
-    public function mount()
+    public function mount(): void
     {
         // Load favorite states, e.g., from database
         $this->favorites = Article::all()->pluck('is_favorite', 'id')->toArray();
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.article-list', [$this->articles]);
     }
 
-    public function highlightMatch($text)
+    public function highlightMatch(string $text): ?string
     {
         if (! $this->searchString || strlen($this->searchString) < 3) {
             return $text;
@@ -42,21 +43,21 @@ class ArticleList extends Component
     }
 
     #[On('article-list:articles-by-category')]
-    public function getCategoryArticles($id)
+    public function getCategoryArticles(int $id): void
     {
         session()->flash('message', 'Post successfully updated.');
         $this->loadArticles('category_id', $id);
     }
 
     #[On('article-list:favorite-article')]
-    public function getFavoriteArticlesByArticleId($id)
+    public function getFavoriteArticlesByArticleId($id): void
     {
         session()->flash('message', 'Post successfully updated.');
         $this->loadArticles('id', $id);
     }
 
     #[On('article-list:search-keyword')]
-    public function getArticlesByString($str)
+    public function getArticlesByString(string $str): void
     {
         $this->searchString = $str;
         $this->reset('articles');
@@ -66,13 +67,13 @@ class ArticleList extends Component
     }
 
     #[On('article-list:article')]
-    public function getArticle($id)
+    public function getArticle(int $id): void
     {
         $this->reset('articles');
         $this->loadArticles('id', $id);
     }
 
-    private function loadArticles(string $fieldName, int $fieldValue)
+    private function loadArticles(string $fieldName, int $fieldValue): void
     {
         $this->reset('articles');
         $this->articles = Article::where($fieldName, $fieldValue)->orderBy('title')->get();
@@ -82,7 +83,7 @@ class ArticleList extends Component
      * User updating favorite value.
      * Refresh favorite list component to update page contents
      */
-    public function updateFavorite($articleId)
+    public function updateFavorite(int $articleId): void
     {
         $this->favorites[$articleId] = ! $this->favorites[$articleId];
 
